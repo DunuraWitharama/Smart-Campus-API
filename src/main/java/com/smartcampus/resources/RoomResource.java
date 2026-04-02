@@ -6,9 +6,11 @@ import com.smartcampus.models.Room;
 import com.smartcampus.repository.DataStore;
 
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -25,5 +27,11 @@ public class RoomResource {
         if (DataStore.rooms.containsKey(room.getId())) return Response.status(409).build();
         DataStore.rooms.put(room.getId(), room);
         return Response.status(201).entity(room).build();
+    }
+    @DELETE
+    @Path("/{id}")
+    public Response delete(@PathParam("id") String id) {
+        if (DataStore.rooms.remove(id) == null) return Response.status(404).build();
+        return Response.noContent().build();
     }
 }
