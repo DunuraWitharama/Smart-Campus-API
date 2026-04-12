@@ -1,0 +1,12 @@
+package com.smartcampus.exceptions;
+import jakarta.ws.rs.NotFoundException;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.ext.ExceptionMapper;
+import jakarta.ws.rs.ext.Provider;
+
+@Provider
+public class NotFoundMapper implements ExceptionMapper<NotFoundException> {
+    public Response toResponse(NotFoundException e) {
+        return Response.status(404).entity("{\"msg\":\"Not Found\"}").build();
+    }
+}
