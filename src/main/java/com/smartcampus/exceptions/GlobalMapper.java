@@ -5,6 +5,7 @@ import jakarta.ws.rs.ext.Provider;
 
 @Provider
 public class GlobalMapper implements ExceptionMapper<Throwable> {
+    @Override
     public Response toResponse(Throwable t) {
         // Prevents stack trace disclosure
         return Response.status(500).entity("{\"msg\":\"Internal Server Error\"}").build();

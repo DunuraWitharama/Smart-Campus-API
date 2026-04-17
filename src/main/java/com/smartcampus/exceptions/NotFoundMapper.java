@@ -6,6 +6,7 @@ import jakarta.ws.rs.ext.Provider;
 
 @Provider
 public class NotFoundMapper implements ExceptionMapper<NotFoundException> {
+    @Override
     public Response toResponse(NotFoundException e) {
         return Response.status(404).entity("{\"msg\":\"Not Found\"}").build();
     }
