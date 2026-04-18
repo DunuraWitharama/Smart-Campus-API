@@ -6,7 +6,7 @@ public class Room {
     private String id;
     private String name;
     private int capacity;
-    private List<String> sensorIds = new ArrayList<>();
+    private final List<String> sensorIds = new ArrayList<>();
 
     public Room() {}
     public String getId() { return id; }
